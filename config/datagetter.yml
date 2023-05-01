@@ -3,27 +3,13 @@ groups:
     prefix: mytest
     metrics:
       sum: # random key
-        name: sumsum #????
         target:
           type: math
           expression: 2 + 3
         sending:
-          target: out
+          target: stdout
           format: '%p.%k: %v'
         time: 2
-      bigger:
-        name: fuckfuck
-        target:
-          type: math
-          expression: 2+7
-        sending:
-          target: out
-          format: '%p.%k: %v'
-        time: 1
-#  magic:
-#    prefix: t
-#  huyagic:
-#    prefix: a
 
 #groups:
 #  koronaPay:

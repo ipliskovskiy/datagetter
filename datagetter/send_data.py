@@ -1,6 +1,6 @@
 def send_data(rules, prefix, key, data):
     result = __format__(rules, prefix, key, data)
-    if rules['target'] == 'out':
+    if rules['target'] == 'stdout':
         print_data(result)
 
 
