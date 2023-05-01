@@ -1,0 +1,50 @@
+groups:
+  test: # random key
+    prefix: mytest
+    metrics:
+      sum: # random key
+        name: sumsum #????
+        target:
+          type: math
+          expression: 2 + 3
+        sending:
+          target: out
+          format: '%p.%k: %v'
+        time: 2
+      bigger:
+        name: fuckfuck
+        target:
+          type: math
+          expression: 2+7
+        sending:
+          target: out
+          format: '%p.%k: %v'
+        time: 1
+#  magic:
+#    prefix: t
+#  huyagic:
+#    prefix: a
+
+#groups:
+#  koronaPay:
+#    prefix: transfers.corona
+#    metrics:
+#      exchangeRate4000:
+#        name: KoronaPay
+#        target:
+#          type: json
+#          headers: {'authority': 'koronapay.com', 'sec-fetch-dest': 'document', 'sec-fetch-mode': 'navigate', 'sec-fetch-site': 'none', 'sec-fetch-user': '?1', 'upgrade-insecure-requests': '1', 'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'}
+#          url: https://koronapay.com/transfers/online/api/transfers/tariffs?sendingCountryId=RUS&sendingCurrencyId=810&receivingCountryId=GEO&receivingCurrencyId=981&paymentMethod=debitCard&receivingAmount=4000&receivingMethod=cash&paidNotificationEnabled=false
+#        prefix: transfers.corona
+#        keys:
+#          - exchangeRate
+#          - receivingAmount
+#          - sendingAmount
+#        overide_names:
+#          exchangeRate: exchangeRate4000
+#          receivingAmount: receivingAmount4000
+#          sendingAmount: sendingAmount4000
+#        sending:
+#          format: 'key: value'
+#  ara:
+#  mara:
