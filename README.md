@@ -30,10 +30,11 @@ This is simple ways to send data. Data sending to stdout.
 ```
 target:
   target: stdout
+  format: <format> # example: '%p.%k: %v' (see format)
 ```
 
 ## Settings
-### format
+### Format
 %p = groups.<name_group>.prefix
 %k = groups.<name_group>.<name_metrics>
 %v = The result of receiving data
