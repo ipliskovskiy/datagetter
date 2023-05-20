@@ -1,8 +1,11 @@
-from get_config import read_config
-from get_config import Config
+from Config import *
 from daemon import start
 
 
 if __name__ == '__main__':
     config = Config(read_config())
-    start(config.groups)
+    for metrics in config.get_timemap():
+        metrics.get_data()
+    exit(1)
+
+    # start(config.groups)

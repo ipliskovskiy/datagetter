@@ -4,10 +4,10 @@ def send_data(rules, prefix, key, data):
         print_data(result)
 
 
-
 def __format__(rules, prefix, key, data):
     format = rules['format']
-    return format.replace("%p", prefix).replace("%k", key).replace("%v", str(data))
+    result = format.replace("%p", prefix).replace("%k", key).replace("%v", str(data))
+    return result
 
 
 def print_data(result):
