@@ -19,7 +19,7 @@ def request_data(headers, url, type_result):
     return data
 
 
-def get_result_json(url):
+def get_result_json(url, headers):
     r = requests.get(url, headers=headers)
     data_json = r.json()
     return data_json

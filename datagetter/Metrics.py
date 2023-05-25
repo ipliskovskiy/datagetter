@@ -58,6 +58,8 @@ class Metrics:
             data = send_params['calc'].replace("%v", str(result))
             data = eval(data)
             data = self.__format_string__(send_params, metrics_name, data)
+        else:
+            data = self.__format_string__(send_params, metrics_name, result)
         return data
 
     def __prepare_data_json__(self, send_params, metrics_name, result):
