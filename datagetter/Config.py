@@ -3,7 +3,7 @@ from Metrics import Metrics
 
 
 def read_config():
-    with open("config/custom.yml", "r") as stream:
+    with open("config/realmetrics.yml", "r") as stream:
         try:
             return yaml.safe_load(stream)
         except yaml.YAMLError as exc:

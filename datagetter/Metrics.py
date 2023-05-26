@@ -66,14 +66,20 @@ class Metrics:
         j = result.json()
         data = ''
         for key in send_params['keys_json']:
-            if send_params['keys_json'][key].get('calc'):
-                r = send_params['keys_json'][key]['calc'].replace("%v", str(j[key]))
+            if send_params['keys_json'][key].get('calc') != None:
+                if type(j) == list:
+                    r = send_params['keys_json'][key]['calc'].replace("%v", str(j[0][key]))
+                else:
+                    r = send_params['keys_json'][key]['calc'].replace("%v", str(j[key]))
                 r = eval(r)
+            if send_params['keys_json'][key].get('override_name') != None:
+                r = self.__format_string_json__(send_params, metrics_name, r, send_params['keys_json'][key]['override_name'])
+            else:
                 r = self.__format_string_json__(send_params, metrics_name, r, key)
-                data = data + r + '\n'
+            data = data + r + '\n'
         return data
 
-    def __format_string_json__(self, send_params, metrics_name ,result, json_key):
+    def __format_string_json__(self, send_params, metrics_name, result, json_key):
         format = send_params['format']
         return format.replace("%p", self.prefix)\
             .replace("%k", metrics_name)\

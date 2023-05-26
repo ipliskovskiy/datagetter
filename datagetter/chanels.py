@@ -7,6 +7,7 @@ def send_output(data):
 
 def send_post_data(url, data):
     r = requests.post(url=url, data=data)
+    print(str(r.status_code))
     return r
 
 
