@@ -1,0 +1,39 @@
+groups:
+  flat:
+    prefix: flat
+    metrics:
+      silknetData:
+        target:
+          type: request
+          headers: {'Accept': 'application/json', 'authority': 'silknet.com'}
+          url: 'https://silknet.com/api/view/services/fixes-balance?phoneNumber=91151413&numberType=ACCOUNT'
+        sending:
+          target: stdout
+          url: 'http://masto:gj448p1QLpcaVW90RI5dc10m3NHp0e4k68DtMsV4896m14zx3UoSc2ldhLoBQ0u7@45.140.179.208:9091/metrics/job/pushgateway/instance/flat'
+          keys_json:
+            debt:
+              calc: '%v/100'
+              override_name: silknet_debt
+            advance:
+              override_name: silknet_advance
+              calc: '%v/100'
+          format: '%n %v'
+        time: 10
+  corona:
+    prefix: test
+    metrics:
+      exchange4000:
+        target:
+          type: request
+          headers: {'authority': 'koronapay.com', 'sec-fetch-dest': 'document', 'sec-fetch-mode': 'navigate', 'sec-fetch-site': 'none', 'sec-fetch-user': '?1', 'upgrade-insecure-requests': '1', 'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'}
+          url: 'https://koronapay.com/transfers/online/api/transfers/tariffs?sendingCountryId=RUS&sendingCurrencyId=810&receivingCountryId=GEO&receivingCurrencyId=981&paymentMethod=debitCard&receivingAmount=4000&receivingMethod=cash&paidNotificationEnabled=false'
+        sending:
+          target: stdout
+          url: 'http://masto:gj448p1QLpcaVW90RI5dc10m3NHp0e4k68DtMsV4896m14zx3UoSc2ldhLoBQ0u7@45.140.179.208:9091/metrics/job/pushgateway/instance/transfers'
+          keys_json:
+            exchangeRate:
+              override_name: corona2_exchangeRate4000
+            sendingAmount:
+              override_name: corona2_sendingAmount4000
+          format: '%n %v'
+        time: 10
